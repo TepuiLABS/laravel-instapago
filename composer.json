@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "tepuilabs/laravel-instapago",
+    "description": "Library for payments in VEF (Bsf.) in Venezuela.",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "tepuilabs",
+        "laravel-instapago"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/tepuilabs/laravel-instapago",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "angel cruz",
+            "email": "angel@tepuilabs.dev",
             "homepage": "https://spatie.be",
             "role": "Developer"
         }
@@ -25,13 +25,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Tepuilabs\\LaravelInstapago\\": "src",
+            "Tepuilabs\\LaravelInstapago\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Tepuilabs\\LaravelInstapago\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "Tepuilabs\\LaravelInstapago\\LaravelInstapagoServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "LaravelInstapago": "Tepuilabs\\LaravelInstapago\\LaravelInstapagoFacade"
             }
         }
     },

@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace Tepuilabs\LaravelInstapago\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelInstapagoCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-instapago';
 
     public $description = 'My command';
 
