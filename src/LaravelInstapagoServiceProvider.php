@@ -7,35 +7,56 @@ use Tepuilabs\LaravelInstapago\Commands\LaravelInstapagoCommand;
 
 class LaravelInstapagoServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
+    {
+        $this->registerPublishables();
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-instapago.php', 'laravel-instapago');
+    }
+
+    protected function registerPublishables(): self
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/laravel-instapago.php' => config_path('laravel-instapago.php'),
             ], 'config');
 
-            $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/laravel-instapago'),
-            ], 'views');
+            // $this->publishes([
+            //     __DIR__ . '/../resources/views' => base_path('resources/views/vendor/laravel-instapago'),
+            // ], 'views');
 
-            $migrationFileName = 'create_laravel_instapago_table.php';
-            if (! $this->migrationFileExists($migrationFileName)) {
-                $this->publishes([
-                    __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
-                ], 'migrations');
-            }
-
-            $this->commands([
-                LaravelInstapagoCommand::class,
-            ]);
+            // $migrationFileName = 'create_laravel_instapago_table.php';
+            // if (! $this->migrationFileExists($migrationFileName)) {
+            //     $this->publishes([
+            //         __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
+            //     ], 'migrations');
+            // }
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-instapago');
+        return $this;
     }
 
-    public function register()
+    protected function registerCommands(): self
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-instapago.php', 'laravel-instapago');
+        if (! $this->app->runningInConsole()) {
+            return $this;
+        }
+
+        $this->commands([
+            LaravelInstapagoCommand::class,
+        ]);
+
+        return $this;
+    }
+
+    protected function registerViews(): self
+    {
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-instapago');
+
+        return $this;
     }
 
     public static function migrationFileExists(string $migrationFileName): bool
