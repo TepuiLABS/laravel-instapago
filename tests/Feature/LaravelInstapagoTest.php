@@ -87,7 +87,7 @@ class LaravelInstapagoTest extends TestCase
             'card_holder_id' => '11111111',
             'card_number' => '4111111111111111',
             'cvc' => '123',
-            'expiration' => '12/2020',
+            'expiration' => '12/2023',
             'ip' => '127.0.0.1',
         ];
     }
@@ -101,7 +101,7 @@ class LaravelInstapagoTest extends TestCase
             'card_holder_id' => '11111111',
             'card_number' => '4111111111111112',
             'cvc' => '123',
-            'expiration' => '12/2020',
+            'expiration' => '12/2019',
             'ip' => '127.0.0.1',
         ];
     }
