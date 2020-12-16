@@ -14,8 +14,8 @@ class LaravelInstapago
 
     public function __construct()
     {
-        $this->key_id = config('instapago.key_id');
-        $this->public_key_id = config('instapago.public_key_id');
+        $this->key_id = config('laravel-instapago.key_id');
+        $this->public_key_id = config('laravel-instapago.public_key_id');
 
         if (empty($this->key_id) || empty($this->public_key_id)) {
             throw new InstapagoException('Los parámetros "keyId" y "publicKeyId" son requeridos para procesar la petición.');

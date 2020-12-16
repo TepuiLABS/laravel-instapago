@@ -1,16 +1,16 @@
 <?php
 
-namespace Tepuilabs\LaravelInstapago;
+namespace Tepuilabs\LaravelInstapago\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Tepuilabs\LaravelInstapago\LaravelInstapago
  */
-class LaravelInstapagoFacade extends Facade
+class LaravelInstapago extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-instapago';
+        return \Tepuilabs\LaravelInstapago\LaravelInstapago::class;
     }
 }

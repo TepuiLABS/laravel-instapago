@@ -57,7 +57,7 @@
                 "Tepuilabs\\LaravelInstapago\\LaravelInstapagoServiceProvider"
             ],
             "aliases": {
-                "LaravelInstapago": "Tepuilabs\\LaravelInstapago\\LaravelInstapagoFacade"
+                "LaravelInstapago": "Tepuilabs\\LaravelInstapago\\Facade\\LaravelInstapago"
             }
         }
     },
