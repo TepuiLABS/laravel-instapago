@@ -3,7 +3,10 @@
     "description": "Library for payments in VEF (Bsf.) in Venezuela.",
     "keywords": [
         "tepuilabs",
-        "laravel-instapago"
+        "laravel-instapago",
+        "instapago",
+        "banesco",
+        "venezuela"
     ],
     "homepage": "https://github.com/tepuilabs/laravel-instapago",
     "license": "MIT",
@@ -11,17 +14,21 @@
         {
             "name": "angel cruz",
             "email": "angel@tepuilabs.dev",
-            "homepage": "https://spatie.be",
+            "homepage": "https://tepuilabs.dev",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "illuminate/contracts": "^8.0"
+        "illuminate/contracts": "^8.0",
+        "instapago/instapago": "^6.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17",
         "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^9.3",
+        "psalm/plugin-laravel": "^1.4",
+        "vimeo/psalm": "^4.3"
     },
     "autoload": {
         "psr-4": {
@@ -37,7 +44,9 @@
     "scripts": {
         "psalm": "vendor/bin/psalm",
         "test": "vendor/bin/phpunit --colors=always",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+		"all" : "composer psalm && composer test && composer test-coverage && composer format"
     },
     "config": {
         "sort-packages": true
@@ -53,15 +62,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "funding": [
-        {
-            "type": "github",
-            "url": "https://github.com/sponsors/spatie"
-        },
-        {
-            "type": "other",
-            "url": "https://spatie.be/open-source/support-us"
-        }
-    ]
+    "prefer-stable": true
 }
