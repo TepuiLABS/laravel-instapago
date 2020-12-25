@@ -3,7 +3,6 @@
 namespace Tepuilabs\LaravelInstapago;
 
 use Illuminate\Support\ServiceProvider;
-use Tepuilabs\LaravelInstapago\Commands\LaravelInstapagoCommand;
 
 class LaravelInstapagoServiceProvider extends ServiceProvider
 {
@@ -44,10 +43,6 @@ class LaravelInstapagoServiceProvider extends ServiceProvider
         if (! $this->app->runningInConsole()) {
             return $this;
         }
-
-        $this->commands([
-            LaravelInstapagoCommand::class,
-        ]);
 
         return $this;
     }

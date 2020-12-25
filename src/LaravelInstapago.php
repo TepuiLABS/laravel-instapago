@@ -12,6 +12,11 @@ class LaravelInstapago
 
     protected Api $api;
 
+    /**
+     *
+     * @psalm-suppress PossiblyInvalidCast
+     * @psalm-suppress PossiblyInvalidArgument
+     */
     public function __construct()
     {
         $this->key_id = config('laravel-instapago.key_id');
