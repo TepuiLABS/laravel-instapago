@@ -23,15 +23,17 @@ composer require tepuilabs/laravel-instapago
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Tepuilabs\LaravelInstapago\LaravelInstapagoServiceProvider" --tag="config"
+php artisan vendor:publish --tag="laravel-instapago-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
+<?php
+
 return [
-    'key_id'           => env('INSTAPAGO_KEY_ID'),
-    'public_key_id'    => env('INSTAPAGO_PUBLIC_KEY_ID'),
+    'key_id' => env('INSTAPAGO_KEY_ID'),
+    'public_key_id' => env('INSTAPAGO_PUBLIC_KEY_ID'),
 ];
 ```
 

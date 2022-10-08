@@ -8,7 +8,7 @@ use Tepuilabs\LaravelInstapago\LaravelInstapagoServiceProvider;
 
 class TestCase extends Orchestra
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -17,7 +17,7 @@ class TestCase extends Orchestra
         );
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LaravelInstapagoServiceProvider::class,
@@ -26,16 +26,11 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
+        config()->set('database.default', 'testing');
 
         /*
-        include_once __DIR__.'/../database/migrations/create_laravel_instapago_table.php.stub';
-        (new \CreatePackageTable())->up();
+        $migration = include __DIR__.'/../database/migrations/create_laravel-instapago_table.php.stub';
+        $migration->up();
         */
     }
 }
