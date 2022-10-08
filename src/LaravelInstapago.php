@@ -2,20 +2,23 @@
 
 namespace Tepuilabs\LaravelInstapago;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Instapago\Instapago\Api;
+use Instapago\Instapago\Exceptions\GenericException;
 use Instapago\Instapago\Exceptions\InstapagoException;
+use Instapago\Instapago\Exceptions\TimeoutException;
+use Instapago\Instapago\Exceptions\ValidationException;
 
 class LaravelInstapago
 {
     protected string $key_id;
+
     protected string $public_key_id;
 
     protected Api $api;
 
     /**
-     *
-     * @psalm-suppress PossiblyInvalidCast
-     * @psalm-suppress PossiblyInvalidArgument
+     * @throws InstapagoException
      */
     public function __construct()
     {
@@ -32,14 +35,11 @@ class LaravelInstapago
     /**
      * Crear un pago directo.
      *
-     * @param array<string> $fields Los campos necesarios
+     * @param  array<string>  $fields Los campos necesarios
      *                              para procesar el pago.
-     *
-     * @throws \Instapago\Instapago\Exceptions\InstapagoException
-     *
-     * @return array<string> Respuesta de Instapago
+     * @return array|string Respuesta de Instapago
      */
-    public function directPayment(array $fields)
+    public function directPayment(array $fields): array|string
     {
         return $this->api->directPayment($fields);
     }
@@ -47,14 +47,11 @@ class LaravelInstapago
     /**
      * Crear un pago diferido o reservado.
      *
-     * @param array<string> $fields Los campos necesarios
+     * @param  array<string>  $fields Los campos necesarios
      *                              para procesar el pago.
-     *
-     * @throws \Instapago\Instapago\Exceptions\InstapagoException
-     *
      * @return array<string> Respuesta de Instapago
      */
-    public function reservePayment(array $fields)
+    public function reservePayment(array $fields): array
     {
         return $this->api->reservePayment($fields);
     }
@@ -64,16 +61,17 @@ class LaravelInstapago
      * Este método funciona para procesar un bloqueo o pre-autorización
      * para así procesarla y hacer el cobro respectivo.
      *
-     * @param array<string> $fields Los campos necesarios
+     * @param  array<string>  $fields Los campos necesarios
      *                              para procesar el pago.
-     *
-     * @throws \Instapago\Instapago\Exceptions\InstapagoException
-     *
-     * @return array<string> Respuesta de Instapago
+     * @return array|string
      */
-    public function continuePayment(array $fields)
+    public function completePayment(array $fields): array|string
     {
-        return $this->api->continuePayment($fields);
+        try {
+            return $this->api->completePayment($fields);
+        } catch (GuzzleException|GenericException|TimeoutException|ValidationException $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -81,28 +79,27 @@ class LaravelInstapago
      * Este método funciona para procesar un bloqueo o pre-autorización
      * para así procesarla y hacer el cobro respectivo.
      *
-     * @param string $paymentId ID del pago a consultar
-     *
-     * @throws \Instapago\Instapago\Exceptions\InstapagoException
-     *
-     * @return array<string> Respuesta de Instapago
+     * @param  string  $paymentId ID del pago a consultar
+     * @return array|string
      */
-    public function query(string $paymentId)
+    public function query(string $paymentId): array|string
     {
-        return $this->api->query($paymentId);
+        try {
+            return $this->api->query($paymentId);
+        } catch (GuzzleException|GenericException|TimeoutException|ValidationException $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
      * Cancelar Pago
      * Este método funciona para cancelar un pago previamente procesado.
      *
-     * @param string $paymentId ID del pago a cancelar
+     * @param  string  $paymentId ID del pago a cancelar
      *
-     * @throws \Instapago\Instapago\Exceptions\InstapagoException
-     *
-     * @return array<string> Respuesta de Instapago
+     * @throws ValidationException
      */
-    public function cancel($paymentId)
+    public function cancel(string $paymentId): array
     {
         return $this->api->cancel($paymentId);
     }
