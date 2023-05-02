@@ -11,10 +11,6 @@ use Instapago\Instapago\Exceptions\ValidationException;
 
 class LaravelInstapago
 {
-    protected string $key_id;
-
-    protected string $public_key_id;
-
     protected Api $api;
 
     /**
@@ -22,14 +18,7 @@ class LaravelInstapago
      */
     public function __construct()
     {
-        $this->key_id = config('laravel-instapago.key_id');
-        $this->public_key_id = config('laravel-instapago.public_key_id');
-
-        if (empty($this->key_id) || empty($this->public_key_id)) {
-            throw new InstapagoException('Los parámetros "keyId" y "publicKeyId" son requeridos para procesar la petición.');
-        }
-
-        $this->api = new Api($this->key_id, $this->public_key_id);
+        $this->api = new Api(config('laravel-instapago.key_id'), config('laravel-instapago.public_key_id'));
     }
 
     /**
@@ -63,7 +52,6 @@ class LaravelInstapago
      *
      * @param  array<string>  $fields Los campos necesarios
      *                              para procesar el pago.
-     * @return array|string
      */
     public function completePayment(array $fields): array|string
     {
@@ -80,7 +68,6 @@ class LaravelInstapago
      * para así procesarla y hacer el cobro respectivo.
      *
      * @param  string  $paymentId ID del pago a consultar
-     * @return array|string
      */
     public function query(string $paymentId): array|string
     {

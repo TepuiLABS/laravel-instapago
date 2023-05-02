@@ -21,13 +21,9 @@ class LaravelInstapagoServiceProvider extends PackageServiceProvider
 
     /**
      * Register services.
-     *
-     * @return void
      */
     public function packageRegistered(): void
     {
-        $this->app->bind('LaravelInstapago', function ($app) {
-            return new LaravelInstapago($app);
-        });
+        $this->app->bind('LaravelInstapago', fn () => new LaravelInstapago());
     }
 }

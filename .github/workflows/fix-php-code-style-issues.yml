@@ -1,6 +1,12 @@
 name: Fix PHP code style issues
 
-on: [pull_request]
+on:
+  pull_request:
+    paths:
+      - '**.php'
+
+permissions:
+  contents: write
 
 jobs:
   php-code-styling:
