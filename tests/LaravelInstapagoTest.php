@@ -1,5 +1,6 @@
 <?php
 
+use function Pest\Laravel\artisan;
 use function PHPUnit\Framework\assertEquals;
 use Tepuilabs\LaravelInstapago\Facades\LaravelInstapago;
 
@@ -28,6 +29,11 @@ beforeEach(function () {
         'expiration' => '12/2026',
         'ip' => '127.0.0.1',
     ];
+});
+
+it('can publish config file', function (): void {
+    artisan('vendor:publish --tag=laravel-instapago-config')
+        ->assertExitCode(0);
 });
 
 it('can trow an invalid input error', function () {

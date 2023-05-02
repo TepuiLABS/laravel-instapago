@@ -6,7 +6,7 @@
 # Library for payments in VEF (Bsf.) in Venezuela.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tepuilabs/laravel-instapago.svg?style=flat-square)](https://packagist.org/packages/tepuilabs/laravel-instapago)
-[![Tests](https://img.shields.io/github/workflow/status/tepuilabs/laravel-instapago/Tests?style=flat-square)](https://github.com/TepuiLABS/laravel-instapago/actions?query=workflow%3ATests+branch%3Amaster)
+[![Tests](https://img.shields.io/github/actions/workflow/status/tepuilabs/laravel-instapago/run-tests-pest.yml?style=flat-square)](https://github.com/TepuiLABS/laravel-instapago/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tepuilabs/laravel-instapago.svg?style=flat-square)](https://packagist.org/packages/tepuilabs/laravel-instapago)
 
 
