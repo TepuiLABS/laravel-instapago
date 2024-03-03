@@ -27,8 +27,8 @@ class LaravelInstapago
     /**
      * Crear un pago directo.
      *
-     * @param  array<string>  $fields Los campos necesarios
-     *                              para procesar el pago.
+     * @param  array<string>  $fields  Los campos necesarios
+     *                                 para procesar el pago.
      * @return array|string Respuesta de Instapago
      */
     public function directPayment(array $fields): array|string
@@ -39,8 +39,8 @@ class LaravelInstapago
     /**
      * Crear un pago diferido o reservado.
      *
-     * @param  array<string>  $fields Los campos necesarios
-     *                              para procesar el pago.
+     * @param  array<string>  $fields  Los campos necesarios
+     *                                 para procesar el pago.
      * @return array<string> Respuesta de Instapago
      */
     public function reservePayment(array $fields): array
@@ -53,8 +53,8 @@ class LaravelInstapago
      * Este método funciona para procesar un bloqueo o pre-autorización
      * para así procesarla y hacer el cobro respectivo.
      *
-     * @param  array<string>  $fields Los campos necesarios
-     *                              para procesar el pago.
+     * @param  array<string>  $fields  Los campos necesarios
+     *                                 para procesar el pago.
      */
     public function completePayment(array $fields): array|string
     {
@@ -70,7 +70,7 @@ class LaravelInstapago
      * Este método funciona para procesar un bloqueo o pre-autorización
      * para así procesarla y hacer el cobro respectivo.
      *
-     * @param  string  $paymentId ID del pago a consultar
+     * @param  string  $paymentId  ID del pago a consultar
      */
     public function query(string $paymentId): array|string
     {
@@ -85,7 +85,7 @@ class LaravelInstapago
      * Cancelar Pago
      * Este método funciona para cancelar un pago previamente procesado.
      *
-     * @param  string  $paymentId ID del pago a cancelar
+     * @param  string  $paymentId  ID del pago a cancelar
      *
      * @throws ValidationException
      */

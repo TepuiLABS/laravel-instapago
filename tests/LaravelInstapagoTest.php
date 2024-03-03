@@ -1,8 +1,9 @@
 <?php
 
+use Tepuilabs\LaravelInstapago\Facades\LaravelInstapago;
+
 use function Pest\Laravel\artisan;
 use function PHPUnit\Framework\assertEquals;
-use Tepuilabs\LaravelInstapago\Facades\LaravelInstapago;
 
 beforeEach(function () {
     config()->set('laravel-instapago.key_id', '1E488391-7934-4301-9F8E-17DC99AB49B3');
