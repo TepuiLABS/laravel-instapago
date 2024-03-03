@@ -18,7 +18,10 @@ class LaravelInstapago
      */
     public function __construct()
     {
-        $this->api = new Api(config('laravel-instapago.key_id'), config('laravel-instapago.public_key_id'));
+        $this->api = new Api(
+            config('laravel-instapago.key_id'),
+            config('laravel-instapago.public_key_id')
+        );
     }
 
     /**
