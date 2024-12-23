@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^8.3",
-        "instapago/instapago": "^8.0",
+        "instapago/instapago": "^9.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
